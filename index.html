@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kisea & Co. — HR Consulting & People Operations</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --espresso:    #3B2418;
+      --taupe:       #8B6B53;
+      --beige:       #CBB9A6;
+      --stone:       #E9E3DA;
+      --sage:        #A6A68B;
+      --ivory:       #F8F6F2;
+      --terracotta:  #C76E4F;
+      --text-body:   #4A3425;
+      --text-mid:    #7A5F4A;
+      --text-light:  #9C8472;
+      --border:      rgba(139,107,83,0.15);
+      --border-soft: rgba(139,107,83,0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--ivory);
+      color: var(--text-body);
+      font-weight: 300;
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: var(--ivory); }
+    ::-webkit-scrollbar-thumb { background: var(--beige); border-radius: 2px; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 5rem;
+      background: rgba(248,246,242,0.94);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border-soft);
+      transition: padding 0.3s ease;
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      color: var(--espresso);
+      text-decoration: none;
+    }
+    .nav-logo em { font-style: italic; font-weight: 300; }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.73rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--espresso); }
+
+    .nav-cta {
+      padding: 0.52rem 1.35rem !important;
+      border: 1px solid var(--espresso) !important;
+      border-radius: 2px;
+      color: var(--espresso) !important;
+      transition: background 0.2s, color 0.2s !important;
+    }
+    .nav-cta:hover {
+      background: var(--espresso) !important;
+      color: var(--ivory) !important;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      padding-top: 5rem;
+      background: var(--ivory);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::after {
+      content: '';
+      position: absolute;
+      right: 41%;
+      top: 12%; bottom: 12%;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 7rem 5rem;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--taupe);
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.1s forwards;
+    }
+
+    .hero-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 3.6vw, 3.7rem);
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--espresso);
+      margin-bottom: 2rem;
+      max-width: 580px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.25s forwards;
+    }
+
+    .hero-body {
+      font-size: 0.94rem;
+      font-weight: 300;
+      line-height: 1.9;
+      color: var(--text-mid);
+      max-width: 500px;
+      margin-bottom: 3rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.4s forwards;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.55s forwards;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 0.82rem 2rem;
+      background: var(--espresso);
+      color: var(--ivory);
+      text-decoration: none;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      border: 1px solid var(--espresso);
+      transition: background 0.22s, border-color 0.22s;
+    }
+    .btn-primary:hover { background: var(--taupe); border-color: var(--taupe); }
+
+    .btn-outline {
+      display: inline-block;
+      padding: 0.82rem 1.8rem;
+      border: 1px solid var(--beige);
+      color: var(--espresso);
+      text-decoration: none;
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      transition: border-color 0.22s;
+    }
+    .btn-outline:hover { border-color: var(--taupe); }
+
+    .hero-right {
+      background: var(--stone);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 7rem 4rem 7rem 4.5rem;
+      border-left: 1px solid var(--border);
+      position: relative;
+    }
+
+    .hero-highlights {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      opacity: 0;
+      animation: fadeIn 1s 0.7s forwards;
+    }
+
+    .hero-hl {
+      padding: 1.8rem 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+    }
+    .hero-hl:first-child { border-top: 1px solid var(--border); }
+
+    .hero-hl-dot {
+      width: 5px;
+      height: 5px;
+      background: var(--sage);
+      border-radius: 50%;
+      margin-top: 0.55rem;
+      flex-shrink: 0;
+    }
+
+    .hero-hl-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--espresso);
+      line-height: 1.4;
+    }
+
+    .hero-pull {
+      margin-top: 2.5rem;
+      padding-left: 1.25rem;
+      border-left: 2px solid var(--terracotta);
+      opacity: 0;
+      animation: fadeIn 1s 1s forwards;
+    }
+    .hero-pull p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--taupe);
+      line-height: 1.65;
+    }
+
+    /* ── SHARED ── */
+    .section-label {
+      display: block;
+      font-size: 0.67rem;
+      font-weight: 500;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.9rem, 3vw, 2.9rem);
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--espresso);
+      margin-bottom: 1.25rem;
+    }
+    .section-title em { font-style: italic; font-weight: 300; color: var(--taupe); }
+
+    .rule {
+      width: 36px;
+      height: 1px;
+      background: var(--beige);
+      margin: 1.5rem 0;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── ABOUT ── */
+    #about {
+      background: var(--ivory);
+      padding: 7rem 5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+      border-top: 1px solid var(--border-soft);
+    }
+
+    .about-body {
+      font-size: 0.94rem;
+      line-height: 1.9;
+      color: var(--text-mid);
+      margin-bottom: 1.25rem;
+    }
+    .about-body strong { font-weight: 500; color: var(--espresso); }
+
+    .about-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 2rem;
+    }
+    .about-tag {
+      padding: 0.38rem 0.95rem;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 0.71rem;
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      color: var(--text-mid);
+    }
+
+    .about-quote-block {
+      background: var(--stone);
+      border-radius: 3px;
+      padding: 3.5rem 3rem;
+      border-top: 3px solid var(--sage);
+    }
+
+    .about-quote-mark {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4rem;
+      font-weight: 300;
+      color: var(--beige);
+      line-height: 1;
+      margin-bottom: -0.75rem;
+      display: block;
+    }
+
+    .about-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--espresso);
+      line-height: 1.55;
+      margin-bottom: 2rem;
+    }
+
+    .about-cite {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--taupe);
+    }
+
+    /* ── SERVICES ── */
+    #services {
+      background: var(--stone);
+      padding: 7rem 5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .services-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: end;
+      margin-bottom: 4rem;
+    }
+
+    .services-header-right {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      line-height: 1.85;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .service-card {
+      background: var(--ivory);
+      padding: 2.4rem 2rem;
+      display: flex;
+      flex-direction: column;
+      transition: background 0.22s;
+    }
+    .service-card:hover { background: #f0ebe4; }
+
+    .service-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: var(--beige);
+      display: block;
+      margin-bottom: 1.1rem;
+      line-height: 1;
+    }
+
+    .service-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--espresso);
+      line-height: 1.35;
+      margin-bottom: 0.85rem;
+    }
+
+    .service-desc {
+      font-size: 0.84rem;
+      line-height: 1.78;
+      color: var(--text-light);
+      flex-grow: 1;
+    }
+
+    .service-tag {
+      display: inline-block;
+      margin-top: 1.5rem;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--sage);
+      padding-top: 0.9rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── WHO WE HELP ── */
+    #who {
+      background: var(--ivory);
+      padding: 7rem 5rem;
+      border-top: 1px solid var(--border-soft);
+    }
+
+    .who-header {
+      max-width: 640px;
+      margin-bottom: 4rem;
+    }
+
+    .who-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .who-card {
+      background: var(--stone);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 2.5rem 2.25rem;
+      transition: border-color 0.22s;
+    }
+    .who-card:hover { border-color: var(--beige); }
+
+    .who-card-label {
+      display: block;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 0.85rem;
+    }
+
+    .who-card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--espresso);
+      line-height: 1.35;
+      margin-bottom: 0.85rem;
+    }
+
+    .who-card-desc {
+      font-size: 0.86rem;
+      line-height: 1.8;
+      color: var(--text-light);
+    }
+
+    /* ── BOOK / CALENDLY ── */
+    #book {
+      background: var(--stone);
+      padding: 7rem 5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: start;
+      border-top: 1px solid var(--border);
+    }
+
+    .book-desc {
+      font-size: 0.93rem;
+      color: var(--text-mid);
+      line-height: 1.9;
+      margin-bottom: 2.5rem;
+    }
+
+    .book-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .book-list li {
+      font-size: 0.86rem;
+      color: var(--text-mid);
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+    .book-list li::before {
+      content: '';
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      background: var(--sage);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* Calendly card */
+    .calendly-card {
+      background: var(--ivory);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 3rem 2.75rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0;
+    }
+
+    .calendly-card-eyebrow {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 1.25rem;
+    }
+
+    .calendly-card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.85rem;
+      font-weight: 400;
+      color: var(--espresso);
+      line-height: 1.25;
+      margin-bottom: 0.75rem;
+    }
+
+    .calendly-card-sub {
+      font-size: 0.86rem;
+      color: var(--text-light);
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    .calendly-details {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      margin-bottom: 2.25rem;
+      padding-bottom: 2.25rem;
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .calendly-detail-row {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      font-size: 0.86rem;
+      color: var(--text-mid);
+    }
+
+    .calendly-detail-icon {
+      width: 28px;
+      height: 28px;
+      background: var(--stone);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .calendly-detail-icon svg {
+      width: 13px;
+      height: 13px;
+      stroke: var(--taupe);
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .btn-calendly {
+      display: inline-block;
+      width: 100%;
+      padding: 1rem 2rem;
+      background: var(--espresso);
+      color: var(--ivory);
+      text-decoration: none;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      border: 1px solid var(--espresso);
+      text-align: center;
+      transition: background 0.22s, border-color 0.22s;
+    }
+    .btn-calendly:hover { background: var(--taupe); border-color: var(--taupe); }
+
+    .calendly-note {
+      margin-top: 1rem;
+      font-size: 0.75rem;
+      color: var(--text-light);
+      text-align: center;
+      width: 100%;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--ivory);
+      padding: 5rem;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 3.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .contact-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.45rem;
+      font-weight: 500;
+      color: var(--espresso);
+      margin-bottom: 0.75rem;
+    }
+    .contact-logo em { font-style: italic; font-weight: 300; }
+
+    .contact-tagline {
+      font-size: 0.84rem;
+      color: var(--text-light);
+      line-height: 1.75;
+      max-width: 280px;
+      margin-bottom: 2rem;
+    }
+
+    .contact-socials {
+      display: flex;
+      gap: 0.65rem;
+    }
+
+    .contact-social {
+      width: 32px;
+      height: 32px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--text-light);
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .contact-social:hover { border-color: var(--espresso); color: var(--espresso); }
+
+    .contact-col-head {
+      font-size: 0.67rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--beige);
+      margin-bottom: 1.4rem;
+    }
+
+    .contact-col-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+    .contact-col-list a {
+      text-decoration: none;
+      font-size: 0.86rem;
+      color: var(--text-mid);
+      transition: color 0.2s;
+    }
+    .contact-col-list a:hover { color: var(--espresso); }
+
+    .contact-detail {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      font-size: 0.86rem;
+      color: var(--text-mid);
+      line-height: 1.75;
+    }
+    .contact-detail a {
+      color: var(--taupe);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .contact-detail a:hover { color: var(--espresso); }
+
+    .location-note {
+      margin-top: 0.4rem;
+      font-size: 0.78rem;
+      color: var(--text-light);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--stone);
+      border-top: 1px solid var(--border);
+      padding: 1.75rem 5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    footer p {
+      font-size: 0.72rem;
+      color: var(--text-light);
+      letter-spacing: 0.04em;
+    }
+    .footer-mark {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.95rem;
+      font-style: italic;
+      color: var(--beige);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1100px) {
+      nav { padding: 1.25rem 2.5rem; }
+      #hero { grid-template-columns: 1fr; }
+      #hero::after { display: none; }
+      .hero-left { padding: 9rem 2.5rem 4rem; }
+      .hero-right { padding: 3.5rem 2.5rem 4rem; border-left: none; border-top: 1px solid var(--border); }
+      #about { grid-template-columns: 1fr; gap: 3rem; padding: 5rem 2.5rem; }
+      #services { padding: 5rem 2.5rem; }
+      .services-header { grid-template-columns: 1fr; gap: 1rem; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      #who { padding: 5rem 2.5rem; }
+      #book { grid-template-columns: 1fr; gap: 3rem; padding: 5rem 2.5rem; }
+      #contact { grid-template-columns: 1fr; padding: 4rem 2.5rem; gap: 2.5rem; }
+      footer { padding: 1.5rem 2.5rem; }
+    }
+
+    @media (max-width: 680px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hero-left { padding: 8rem 1.5rem 3rem; }
+      .hero-right { padding: 3rem 1.5rem; }
+      #about, #book { padding: 4rem 1.5rem; }
+      #services { padding: 4rem 1.5rem; }
+      .services-grid { grid-template-columns: 1fr; }
+      #who { padding: 4rem 1.5rem; }
+      .who-grid { grid-template-columns: 1fr; }
+      #contact { padding: 3.5rem 1.5rem; }
+      footer { padding: 1.25rem 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <a href="#hero" class="nav-logo">Kisea <em>& Co.</em></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#who">Who We Help</a></li>
+      <li><a href="https://calendly.com/kisea-kiseaandco/30min" target="_blank" class="nav-cta">Start the Conversation</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section id="hero">
+    <div class="hero-left">
+      <span class="hero-eyebrow">HR Consulting & People Operations</span>
+      <h1 class="hero-headline">Helping growing businesses build stronger teams, better systems, and scalable people operations.</h1>
+      <p class="hero-body">Kisea & Co. supports growing businesses with hiring, onboarding, employee relations, compliance, workforce administration, and the people processes needed to scale with confidence.</p>
+      <div class="hero-actions">
+        <a href="https://calendly.com/kisea-kiseaandco/30min" target="_blank" class="btn-primary">Start the Conversation</a>
+        <a href="#services" class="btn-outline">Explore Services</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-highlights">
+        <div class="hero-hl">
+          <div class="hero-hl-dot"></div>
+          <span class="hero-hl-text">People Operations</span>
+        </div>
+        <div class="hero-hl">
+          <div class="hero-hl-dot"></div>
+          <span class="hero-hl-text">Recruiting & Hiring</span>
+        </div>
+        <div class="hero-hl">
+          <div class="hero-hl-dot"></div>
+          <span class="hero-hl-text">HR Compliance</span>
+        </div>
+        <div class="hero-hl">
+          <div class="hero-hl-dot"></div>
+          <span class="hero-hl-text">Workforce Administration</span>
+        </div>
+        <div class="hero-hl">
+          <div class="hero-hl-dot"></div>
+          <span class="hero-hl-text">Employee Relations</span>
+        </div>
+        <div class="hero-hl">
+          <div class="hero-hl-dot"></div>
+          <span class="hero-hl-text">Payroll & Benefits Support</span>
+        </div>
+      </div>
+      <div class="hero-pull">
+        <p>"Small businesses deserve the same quality of HR support as larger organizations — without the overhead or the jargon."</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ── -->
+  <section id="about">
+    <div class="reveal">
+      <span class="section-label">About Kisea & Co.</span>
+      <h2 class="section-title">HR that works for <em>your</em> business.</h2>
+      <div class="rule"></div>
+      <p class="about-body">Kisea & Co. was built for small and growing businesses that need <strong>reliable, thoughtful HR support</strong> — without the complexity or cost of an in-house team. We bring strategic, people-centered expertise to organizations at every stage of growth.</p>
+      <p class="about-body">Whether you're navigating your first hire, an employee relations matter, or a full HR buildout, we meet you where you are and help you build what comes next.</p>
+      <div class="about-tags">
+        <span class="about-tag">People-Centered</span>
+        <span class="about-tag">Practical</span>
+        <span class="about-tag">Strategic</span>
+        <span class="about-tag">Confidential</span>
+        <span class="about-tag">Scalable</span>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="about-quote-block">
+        <span class="about-quote-mark">"</span>
+        <p class="about-quote">Small businesses deserve access to the same quality of HR support as larger organizations — without the overhead or the jargon.</p>
+        <p class="about-cite">Kisea — Founder & Principal Consultant</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SERVICES ── -->
+  <section id="services">
+    <div class="services-header reveal">
+      <div>
+        <span class="section-label">What We Offer</span>
+        <h2 class="section-title">Comprehensive support, <em>tailored to where you are.</em></h2>
+      </div>
+      <p class="services-header-right">Each engagement is customized. We meet you where you are and build what your business actually needs — nothing more, nothing less.</p>
+    </div>
+    <div class="services-grid reveal">
+
+      <div class="service-card">
+        <span class="service-num">01</span>
+        <div class="service-name">People Operations & HR Support</div>
+        <p class="service-desc">Day-to-day HR advisory and operations support — the infrastructure, systems, and processes your team needs to function and grow with less friction.</p>
+        <span class="service-tag">Operational clarity</span>
+      </div>
+
+      <div class="service-card">
+        <span class="service-num">02</span>
+        <div class="service-name">Recruiting & Talent Acquisition</div>
+        <p class="service-desc">Job architecture, sourcing strategy, interview design, and offer support — building a hiring process that finds the right people and reflects your values.</p>
+        <span class="service-tag">Hire with intention</span>
+      </div>
+
+      <div class="service-card">
+        <span class="service-num">03</span>
+        <div class="service-name">Onboarding & Workforce Administration</div>
+        <p class="service-desc">Structured onboarding journeys, employee records, and administrative processes that set new hires up for success from day one.</p>
+        <span class="service-tag">Strong starts</span>
+      </div>
+
+      <div class="service-card">
+        <span class="service-num">04</span>
+        <div class="service-name">Employee Relations & Performance Management</div>
+        <p class="service-desc">Navigating employee concerns, performance frameworks, disciplinary processes, and the conversations that require both care and consistency.</p>
+        <span class="service-tag">Handle it well</span>
+      </div>
+
+      <div class="service-card">
+        <span class="service-num">05</span>
+        <div class="service-name">Payroll, Benefits & Compliance Support</div>
+        <p class="service-desc">Employment compliance, handbook development, benefits administration guidance, and the frameworks that protect your business and your people.</p>
+        <span class="service-tag">Stay protected</span>
+      </div>
+
+      <div class="service-card">
+        <span class="service-num">06</span>
+        <div class="service-name">Systems, Process & Workforce Reporting</div>
+        <p class="service-desc">HR systems setup, process documentation, and workforce reporting — the visibility into your people data that good decisions depend on.</p>
+        <span class="service-tag">Informed leadership</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── WHO WE HELP ── -->
+  <section id="who">
+    <div class="who-header reveal">
+      <span class="section-label">Who We Help</span>
+      <h2 class="section-title">Built for businesses that are <em>building something real.</em></h2>
+      <p style="font-size:0.93rem; color:var(--text-light); line-height:1.85; margin-top:0.75rem;">We work with small and growing businesses that need reliable HR support without the complexity, cost, or overhead of a full in-house team.</p>
+    </div>
+    <div class="who-grid reveal">
+
+      <div class="who-card">
+        <span class="who-card-label">Founders & Early-Stage Teams</span>
+        <div class="who-card-title">Making your first hires and need a solid foundation</div>
+        <p class="who-card-desc">We help you put the right systems in place before issues arise — so your first few hires become the beginning of a healthy, well-run team, not a compliance headache.</p>
+      </div>
+
+      <div class="who-card">
+        <span class="who-card-label">Growing Teams & Small Businesses</span>
+        <div class="who-card-title">Scaling quickly and feeling the growing pains</div>
+        <p class="who-card-desc">We bring structure and clarity to teams in motion — policies, processes, and people infrastructure that keep pace with your growth without slowing it down.</p>
+      </div>
+
+      <div class="who-card">
+        <span class="who-card-label">Owner-Operators</span>
+        <div class="who-card-title">Wearing too many hats, and HR shouldn't be one of them.</div>
+        <p class="who-card-desc">We act as your embedded HR partner — available when you need guidance, handling what you shouldn't have to, so you can stay focused on the business itself.</p>
+      </div>
+
+      <div class="who-card">
+        <span class="who-card-label">Teams in Transition</span>
+        <div class="who-card-title">Navigating change, restructuring, or a people challenge</div>
+        <p class="who-card-desc">Whether you're managing a leadership shift, a sensitive employee situation, or an organizational change — we help you navigate it with care and consistency.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── BOOK ── -->
+  <section id="book">
+    <div class="reveal">
+      <span class="section-label">Start the Conversation</span>
+      <h2 class="section-title">Let's talk about what your team <em>actually needs.</em></h2>
+      <div class="rule"></div>
+      <p class="book-desc">A complimentary 30-minute call to get to know your business, your team, and what's getting in the way. No pitch — just a real conversation about where we can help.</p>
+      <ul class="book-list">
+        <li>30 minutes, complimentary</li>
+        <li>Tailored to your situation</li>
+        <li>Confidential and judgment-free</li>
+        <li>Clear next steps, no obligation</li>
+      </ul>
+    </div>
+
+    <div class="calendly-card reveal">
+      <span class="calendly-card-eyebrow">Book a Time</span>
+      <div class="calendly-card-title">30-Minute Discovery Call</div>
+      <p class="calendly-card-sub">Pick a time that works for you. We'll take it from there.</p>
+
+      <div class="calendly-details">
+        <div class="calendly-detail-row">
+          <div class="calendly-detail-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          30 minutes
+        </div>
+        <div class="calendly-detail-row">
+          <div class="calendly-detail-icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
+          You choose the date and time
+        </div>
+        <div class="calendly-detail-row">
+          <div class="calendly-detail-icon">
+            <svg viewBox="0 0 24 24"><path d="M15 10l4.553-2.069A1 1 0 0 1 21 8.87v6.26a1 1 0 0 1-1.447.899L15 14"/><rect x="1" y="6" width="15" height="12" rx="2"/></svg>
+          </div>
+          Virtual — via Google Meet or Zoom
+        </div>
+        <div class="calendly-detail-row">
+          <div class="calendly-detail-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          Completely confidential
+        </div>
+      </div>
+
+      <a href="https://calendly.com/kisea-kiseaandco/30min" target="_blank" class="btn-calendly">Start the Conversation →</a>
+      <p class="calendly-note">You'll receive a confirmation and calendar invite immediately.</p>
+    </div>
+  </section>
+
+  <!-- ── CONTACT ── -->
+  <section id="contact">
+    <div class="reveal">
+      <div class="contact-logo">Kisea <em>& Co.</em></div>
+      <p class="contact-tagline">HR consulting and people operations for growing businesses ready to invest in their teams.</p>
+      <div class="contact-socials">
+        <a href="#" class="contact-social" title="LinkedIn">in</a>
+        <a href="#" class="contact-social" title="Instagram">ig</a>
+        <a href="mailto:kisea@kiseaandco.com" class="contact-social" title="Email">@</a>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <p class="contact-col-head">Navigate</p>
+      <ul class="contact-col-list">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#who">Who We Help</a></li>
+        <li><a href="https://calendly.com/kisea-kiseaandco/30min" target="_blank">Start the Conversation</a></li>
+      </ul>
+    </div>
+
+    <div class="reveal">
+      <p class="contact-col-head">Get in Touch</p>
+      <div class="contact-detail">
+        <p><a href="mailto:kisea@kiseaandco.com">kisea@kiseaandco.com</a></p>
+        <p><a href="https://kiseaandco.com" target="_blank">kiseaandco.com</a></p>
+        <p style="margin-top:0.5rem;">Available Mon – Fri<br />9:00 AM – 5:00 PM EST</p>
+        <p class="location-note">Atlanta-based | Virtual support available</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <p>© 2026 Kisea & Co. All rights reserved.</p>
+    <div class="footer-mark">People-centered. Strategy-driven.</div>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 70);
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    reveals.forEach(el => io.observe(el));
+
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      nav.style.padding = window.scrollY > 50 ? '1rem 5rem' : '1.5rem 5rem';
+    });
+  </script>
+</body>
+</html>
