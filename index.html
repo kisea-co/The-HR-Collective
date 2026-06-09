@@ -787,8 +787,18 @@
 
     @media (max-width: 680px) {
       nav { padding: 1rem 1.5rem; }
-      .nav-links { display: none; }
-      .hero-left { padding: 8rem 1.5rem 3rem; }
+      .nav-links { 
+        display: flex;
+      gap: 1rem
+      }
+      .nav-links a { 
+        font size: 0.62rem;
+        letter-spacing: 0.08rem;
+      }
+      .nav-cta {
+        display: none;
+      }
+      .hero-left { padding: 3.5rem 1.5rem 3rem; }
       .hero-right { padding: 3rem 1.5rem; }
       #about, #book { padding: 4rem 1.5rem; }
       #services { padding: 4rem 1.5rem; }
@@ -809,6 +819,7 @@
       <li><a href="#about">About</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#who">Who We Help</a></li>
+      <li><a href="#contact">Contact</a></li>
       <li><a href="https://calendly.com/kisea-kiseaandco/30min" target="_blank" class="nav-cta">Start the Conversation</a></li>
     </ul>
   </nav>
