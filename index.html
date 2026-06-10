@@ -369,7 +369,26 @@
       text-transform: uppercase;
       color: var(--taupe);
     }
-
+/* ── FOUNDER ── */
+#founder {
+background: var(--ivory);
+padding: 7rem 5rem;
+display: grid;
+grid-template-columns: 0.85fr 1.15fr;
+gap: 5rem;
+align-items: center;
+border-top: 1px solid var(--border-soft);
+}
+.founder-image img {
+  width: 100%;
+  max-height: 620px;
+  object-fit: cover;
+  border-radius: 3px;
+  display: block;
+}
+.founder-content {
+  max-width: 620px;
+}
     /* ── SERVICES ── */
     #services {
       background: var(--stone);
@@ -776,15 +795,19 @@
       .hero-left { padding: 2rem 2.5rem 4rem; }
       .hero-right { padding: 3.5rem 2.5rem 4rem; border-left: none; border-top: 1px solid var(--border); }
       #about { grid-template-columns: 1fr; gap: 3rem; padding: 5rem 2.5rem; }
+      #founder {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        padding: 5rem 2.5rem;
+      }
       #services { padding: 5rem 2.5rem; }
       .services-header { grid-template-columns: 1fr; gap: 1rem; }
       .services-grid { grid-template-columns: 1fr 1fr; }
       #who { padding: 5rem 2.5rem; }
       #book { grid-template-columns: 1fr; gap: 3rem; padding: 5rem 2.5rem; }
       #contact { grid-template-columns: 1fr; padding: 4rem 2.5rem; gap: 2.5rem; }
-      footer { padding: 1.5rem 2.5rem; }
+      footer { padding: 1.5rem 2.5rem;
     }
-
     @media (max-width: 680px) {
       nav { 
         padding: 1rem 1.5rem; 
@@ -821,6 +844,12 @@
       #services { padding: 4rem 1.5rem; }
       .services-grid { grid-template-columns: 1fr; }
       #who { padding: 4rem 1.5rem; }
+      #founder { 
+        padding: 4rem 1.5rem;
+      }
+      .founder-image img { 
+        max-height: 420px;
+      }
       .who-grid { grid-template-columns: 1fr; }
       #contact { padding: 3.5rem 1.5rem; }
       footer { padding: 1.25rem 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
@@ -913,7 +942,30 @@
       </div>
     </div>
   </section>
+<!-- ── FOUNDER ── -->
+  <section id="founder">
+    
+    <div class="founder-image reveal">
+      <img src="founder-image.png" alt="Kisea, Founder of Kisea & Co.">
+    </div>
+    
+  </div class="founder-content reveal">
+    <span class="section title">
+      Practical HR guidance from someone who has been inside the work.
+    </h2>
+    <div class="rule"></div>
+    <p class="about-body">
+      Kisea & Co. brings hands-on HR, people operations, employee relations, recruiting, and workforce administration experience to small and growing businesses that need clear, thoughtful support. 
+    </p>
+    <p class="about-body">
+      The goal is simple: help you make better people decisions, build stronger systems, and create a workplace that supports sustainable growth.
+    </p>
+   </div
 
+  div>
+
+  </section>
+  
   <!-- ── SERVICES ── -->
   <section id="services">
     <div class="services-header reveal">
